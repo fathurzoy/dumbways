@@ -87,29 +87,30 @@ function updateBuku($data)
 {
 global $conn;
 
-    $id = htmlspecialchars($data["id"]);
-    $name = htmlspecialchars($data["name"]);
-    $id_author = htmlspecialchars($data["id_author"]);
+    $id = htmlspecialchars($data["id_book"]);
+    $name = htmlspecialchars($data["name_book"]);
     $description = htmlspecialchars($data["description"]);
-    $video_link = htmlspecialchars($data["video_link"]);
+    $stok = htmlspecialchars($data["stok"]);
+    $category = htmlspecialchars($data["category"]);
     $imageLama = htmlspecialchars($data["imageLama"]);
 
 
     //cek apakah gambar diubah
-    if ($_FILES['image']['error']) {
+    if ($_FILES['image_book']['error']) {
         $image = $imageLama;
     } else {
-            $image = upload();
+        $image = upload();
     }
 
-    $query = "UPDATE course, content SET 
-                        course.description='$description', 
-                        course.id_author='$id_author', 
-                        course.thumbnail='$thumbnail', 
-                        content.video_link='$video_link',
-                        content.name='$name' 
-                        WHERE content.id =$id AND course.id=$id;
-                    ";
+    $query = "UPDATE books SET 
+                books.id='$id', 
+                books.name='$name', 
+                books.stok='$stok', 
+                books.image='$image',
+                books.deskripsi='$description', 
+                books.category_id='$category' 
+                WHERE books.id =$id;
+            ";
     mysqli_query($conn, $query);
 
 return mysqli_affected_rows($conn);
