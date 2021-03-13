@@ -89,27 +89,17 @@ global $conn;
 
     $id = htmlspecialchars($data["id_book"]);
     $name = htmlspecialchars($data["name_book"]);
-    $description = htmlspecialchars($data["description"]);
+    $deskripsi = htmlspecialchars($data["description"]);
     $stok = htmlspecialchars($data["stok"]);
     $category = htmlspecialchars($data["category"]);
     $imageLama = htmlspecialchars($data["imageLama"]);
 
 
-    //cek apakah gambar diubah
-    if ($_FILES['image_book']['error']) {
-        $image = $imageLama;
-    } else {
-        $image = upload();
-    }
 
     $query = "UPDATE books SET 
-                books.id='$id', 
-                books.name='$name', 
-                books.stok='$stok', 
-                books.image='$image',
-                books.deskripsi='$description', 
-                books.category_id='$category' 
-                WHERE books.id =$id;
+                name='$name', 
+                deskripsi='$deskripsi', 
+                WHERE id = $id;
             ";
     mysqli_query($conn, $query);
 

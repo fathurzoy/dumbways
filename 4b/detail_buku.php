@@ -89,9 +89,9 @@ if(isset($_POST['submit'])){
                 </button>
             </div>
             <form action="" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="imageLama" value="<?= $select["image"] ?>">
-                <input type="hidden" name="id_book" value="<?= $select["id_book"] ?>">
                 <div class="modal-body">
+                    <input type="hidden" name="imageLama" value="<?= $select["image"] ?>">
+                    <input type="hidden" name="id_book" value="<?= $select["id_book"] ?>">
                     <div class="form-group">
                         <label for="name_book">Nama Buku</label>
                         <input type="text" class="form-control" id="name_book" name="name_book" value="<?= $select['name_book'] ?>">
